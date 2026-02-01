@@ -3,151 +3,848 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy - AUTOBAHN RENT CAR Meknes</title>
+  <meta name="color-scheme" content="dark" />
+  <title>Privacy Policy • AUTOBAHN RENT CAR</title>
   <style>
-    :root {
-      --primary: #1F2A30;
-      --accent: #3F7A6E;
-      --muted: #6C7478;
-      --border: #D6CEC4;
-      --surface: #FFFFFF;
-      --surface-soft: #F3EEE7;
+    :root{
+      --bg0:#070A12;
+      --bg1:#0B1020;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.90);
+      --muted: rgba(255,255,255,.66);
+      --muted2: rgba(255,255,255,.52);
+      --good:#35d07f;
+      --accent:#7c5cff;
+      --accent2:#00e5ff;
+      --warn:#ffcc66;
+      --shadow: 0 18px 80px rgba(0,0,0,.55);
+      --radius: 22px;
+      --radius2: 16px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 0;
-      color: #1C2326;
-      background: transparent;
-      font-family: "Manrope", "Segoe UI", sans-serif;
-      line-height: 1.7;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1400px 800px at 12% 10%, rgba(124,92,255,.25), transparent 60%),
+        radial-gradient(1000px 700px at 78% 20%, rgba(0,229,255,.18), transparent 60%),
+        radial-gradient(1200px 700px at 60% 90%, rgba(53,208,127,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
     }
-    .container {
-      padding: 18px;
+
+    /* Animated background blobs */
+    .blobs{
+      position:fixed; inset:-30vh -20vw;
+      pointer-events:none;
+      filter: blur(40px) saturate(120%);
+      opacity:.9;
+      z-index:-2;
     }
-    h1 {
-      margin: 0 0 6px;
-      font-size: 24px;
-      color: var(--primary);
-      font-family: "Space Grotesk", "Segoe UI", sans-serif;
-      letter-spacing: 0.2px;
+    .blob{
+      position:absolute;
+      width: 42vmax; height: 42vmax;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(124,92,255,.9), rgba(124,92,255,0) 60%);
+      animation: float 14s ease-in-out infinite;
+      mix-blend-mode: screen;
     }
-    h2 {
-      margin: 0 0 8px;
+    .blob.b2{
+      width: 34vmax; height: 34vmax;
+      left: 55%; top: 10%;
+      background: radial-gradient(circle at 30% 30%, rgba(0,229,255,.85), rgba(0,229,255,0) 60%);
+      animation-duration: 18s;
+      animation-delay: -4s;
+    }
+    .blob.b3{
+      width: 36vmax; height: 36vmax;
+      left: 20%; top: 60%;
+      background: radial-gradient(circle at 30% 30%, rgba(53,208,127,.75), rgba(53,208,127,0) 60%);
+      animation-duration: 20s;
+      animation-delay: -8s;
+    }
+    @keyframes float{
+      0%{ transform: translate3d(0,0,0) scale(1) }
+      50%{ transform: translate3d(3vw,-2vh,0) scale(1.05) }
+      100%{ transform: translate3d(0,0,0) scale(1) }
+    }
+
+    /* Subtle starfield */
+    canvas#stars{
+      position:fixed; inset:0;
+      z-index:-3;
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    /* Layout */
+    .wrap{
+      width:min(1100px, 92vw);
+      margin: 0 auto;
+      padding: 38px 0 72px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding: 18px 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      transform-origin: top center;
+      animation: popIn .9s cubic-bezier(.2,.9,.2,1) both;
+    }
+    @keyframes popIn{
+      from{ opacity:0; transform: translateY(14px) scale(.98) }
+      to{ opacity:1; transform: translateY(0) scale(1) }
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 240px;
+    }
+    .logo{
+      width:42px; height:42px;
+      border-radius:14px;
+      background:
+        conic-gradient(from 220deg, rgba(124,92,255,.95), rgba(0,229,255,.9), rgba(53,208,127,.75), rgba(124,92,255,.95));
+      box-shadow: 0 10px 40px rgba(124,92,255,.25);
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+    }
+    .logo:before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 55%);
+      animation: sheen 3.2s ease-in-out infinite;
+      transform: rotate(18deg);
+    }
+    @keyframes sheen{
+      0%,100%{ transform: translate(-10%,-10%) rotate(18deg) }
+      50%{ transform: translate(10%,10%) rotate(18deg) }
+    }
+    .brand h1{
+      margin:0;
+      font-size: 14px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.78);
+      line-height: 1.2;
+    }
+    .brand .title{
+      margin: 2px 0 0;
       font-size: 18px;
-      color: var(--primary);
-      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      letter-spacing: .01em;
+      text-transform:none;
+      color: rgba(255,255,255,.96);
+      font-weight: 700;
     }
-    p, li, dd, dt {
-      font-size: 15px;
+    .meta{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      justify-content:flex-end;
     }
-    .subtitle {
-      margin: 0 0 16px;
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.78);
+      font-size: 12px;
+      user-select:none;
+      transform: translateZ(0);
+    }
+    .chip b{ color: rgba(255,255,255,.92); font-weight: 700; }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--good);
+      box-shadow: 0 0 0 6px rgba(53,208,127,.12);
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{ transform: scale(1); box-shadow: 0 0 0 6px rgba(53,208,127,.10) }
+      50%{ transform: scale(1.15); box-shadow: 0 0 0 10px rgba(53,208,127,.16) }
+    }
+
+    /* Hero */
+    .hero{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 16px;
+    }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .brand{min-width:unset}
+      header{flex-direction:column; align-items:flex-start}
+      .meta{justify-content:flex-start}
+    }
+
+    .card{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      overflow:hidden;
+      position:relative;
+    }
+    .card:after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(600px 200px at 20% 0%, rgba(255,255,255,.09), transparent 55%);
+      pointer-events:none;
+    }
+    .card .inner{
+      padding: 18px 18px 16px;
+      position:relative;
+      z-index:1;
+    }
+
+    .h2{
+      margin:0 0 8px;
+      font-size: 26px;
+      letter-spacing: -.02em;
+      line-height:1.15;
+    }
+    .lead{
+      margin:0;
       color: var(--muted);
-      font-size: 13px;
+      line-height:1.55;
+      font-size: 14.5px;
     }
-    .section {
+
+    .badgeRow{
+      margin-top: 14px;
+      display:flex; flex-wrap:wrap;
+      gap:10px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      transition: transform .25s ease, background .25s ease;
+    }
+    .badge:hover{ transform: translateY(-2px); background: rgba(255,255,255,.06); }
+    .badge .icon{
+      width:28px; height:28px; border-radius: 10px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .badge span{ color: rgba(255,255,255,.86); font-size: 12.5px; }
+
+    /* Accordions */
+    .sections{
       margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
-    dl {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 6px 12px;
-      margin: 10px 0 0;
+    @media (max-width: 900px){ .sections{ grid-template-columns:1fr; } }
+
+    .acc{
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      overflow:hidden;
+      box-shadow: 0 10px 50px rgba(0,0,0,.35);
     }
-    dt {
+    .acc button{
+      width:100%;
+      background: transparent;
+      border:0;
+      color: var(--text);
+      padding: 14px 16px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+      cursor:pointer;
+      font-size: 14.2px;
+      letter-spacing: .01em;
+      outline:none;
+    }
+    .acc button:hover{ background: rgba(255,255,255,.04); }
+    .acc .left{
+      display:flex; align-items:center; gap:12px;
+    }
+    .pill{
+      width:34px; height:34px;
+      border-radius: 12px;
+      display:grid; place-items:center;
+      background: linear-gradient(180deg, rgba(124,92,255,.25), rgba(0,229,255,.14));
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .chev{
+      width: 26px; height:26px;
+      border-radius: 10px;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      transition: transform .28s ease;
+      flex: 0 0 auto;
+    }
+    .panel{
+      max-height: 0;
+      overflow:hidden;
+      transition: max-height .45s ease;
+    }
+    .panel .p{
+      padding: 0 16px 14px;
       color: var(--muted);
-      font-weight: 600;
+      line-height:1.6;
+      font-size: 13.8px;
     }
-    dd {
-      margin: 0;
-    }
-    ul {
+    .panel ul{
+      margin: 10px 0 0;
       padding-left: 18px;
-      margin: 6px 0 0;
+      color: var(--muted);
     }
-    .note {
-      margin-top: 12px;
-      padding: 10px 12px;
-      background: var(--surface-soft);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      color: #2B2A27;
+    .panel li{ margin: 6px 0; }
+    .acc.open .panel{ max-height: 420px; }
+    .acc.open .chev{ transform: rotate(180deg); }
+
+    /* Action card */
+    .cta{
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
     }
-    .contact {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--surface);
-      font-weight: 600;
-      color: var(--primary);
+    .callout{
+      display:flex; gap:12px; align-items:flex-start;
+      padding: 14px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      position:relative;
+      overflow:hidden;
+    }
+    .callout:before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 20% 20%, rgba(124,92,255,.14), transparent 55%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+    .callout h3{
+      margin:0 0 6px;
+      font-size: 14px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.74);
+    }
+    .callout p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.8px;
+      line-height:1.5;
+    }
+
+    .actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      margin-top: 2px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 11px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.9);
+      text-decoration:none;
+      font-size: 13.4px;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      will-change: transform;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.22);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(124,92,255,.32), rgba(0,229,255,.22));
+      border-color: rgba(255,255,255,.18);
+    }
+    .btn .mini{
+      width:28px; height:28px;
+      border-radius: 10px;
+      display:grid; place-items:center;
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 18px;
+      padding: 14px 12px;
+      color: var(--muted2);
+      font-size: 12.5px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    footer code{
+      font-family: var(--mono);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 3px 8px;
+      border-radius: 999px;
+      color: rgba(255,255,255,.78);
+    }
+
+    /* Scroll reveal */
+    .reveal{
+      opacity:0;
+      transform: translateY(12px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.in{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
+      .reveal{opacity:1; transform:none;}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Privacy Policy</h1>
-    <p class="subtitle">Last updated: 2026-01-13</p>
-
-    <dl>
-      <dt>App name</dt>
-      <dd>AUTOBAHN RENT CAR Meknes</dd>
-      <dt>Company</dt>
-      <dd>AUTOBAHN RENT CAR Meknes</dd>
-      <dt>Location</dt>
-      <dd>Meknes, Morocco</dd>
-    </dl>
-
-    <div class="section">
-      <h2>Overview</h2>
-      <p>This app does not collect, store, or share personal data. There is no login, no payment, no analytics, no ads, and no background services.</p>
-    </div>
-
-    <div class="section">
-      <h2>Data collection</h2>
-      <ul>
-        <li>No personal information is collected.</li>
-        <li>No device identifiers are collected.</li>
-        <li>No location data is collected by the app.</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>User-initiated actions</h2>
-      <p>You can choose to:</p>
-      <ul>
-        <li>Start a phone call using your dialer.</li>
-        <li>Open a WhatsApp chat in the WhatsApp app.</li>
-        <li>Open a map link in your preferred maps app.</li>
-      </ul>
-      <p class="note">These actions are initiated by you and handled by the respective apps. Any data you share there is subject to those apps' privacy policies.</p>
-    </div>
-
-    <div class="section">
-      <h2>Data sharing</h2>
-      <p>The app does not share data with third parties because it does not collect data.</p>
-    </div>
-
-    <div class="section">
-      <h2>Data retention</h2>
-      <p>Because no data is collected or stored, there is no data retained on our servers.</p>
-    </div>
-
-    <div class="section">
-      <h2>Changes</h2>
-      <p>If this policy changes, the updated text will be shown in the app.</p>
-    </div>
-
-    <div class="section">
-      <h2>Contact</h2>
-      <p>For questions about this policy, contact AUTOBAHN RENT CAR Meknes in Meknes, Morocco.</p>
-      <div class="contact">Phone: +2127 28 21 19 63</div>
-      <div class="contact">Email: contact@rentautobahn.com</div>
-    </div>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="blobs" aria-hidden="true">
+    <div class="blob b1" style="left:5%; top:0%"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
   </div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Privacy Policy</h1>
+          <div class="title">AUTOBAHN RENT CAR • Meknes</div>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="chip"><span class="dot" aria-hidden="true"></span> <b>No data collected</b></div>
+        <div class="chip">No login • No ads • No analytics</div>
+        <div class="chip">Last shown: <span id="today"></span></div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="card reveal">
+        <div class="inner">
+          <h2 class="h2">Overview</h2>
+          <p class="lead">
+            This app does not collect, store, or share personal data.
+            There is no login, no payment, no analytics, no ads, and no background services.
+          </p>
+
+          <div class="badgeRow" aria-label="Key promises">
+            <div class="badge">
+              <div class="icon" aria-hidden="true">🛡️</div>
+              <span>Privacy-first by design</span>
+            </div>
+            <div class="badge">
+              <div class="icon" aria-hidden="true">🧾</div>
+              <span>No accounts or tracking</span>
+            </div>
+            <div class="badge">
+              <div class="icon" aria-hidden="true">⚙️</div>
+              <span>No background services</span>
+            </div>
+            <div class="badge">
+              <div class="icon" aria-hidden="true">🔒</div>
+              <span>No third-party sharing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="inner cta">
+          <div class="callout">
+            <div class="pill" aria-hidden="true">✉️</div>
+            <div>
+              <h3>Contact</h3>
+              <p>For questions about this policy, contact AUTOBAHN RENT CAR Meknes in Meknes, Morocco.</p>
+            </div>
+          </div>
+
+          <div class="actions" role="group" aria-label="Contact actions">
+            <a class="btn primary" href="tel:+212728211963" aria-label="Call phone number">
+              <span class="mini" aria-hidden="true">📞</span>
+              Phone: +212 7 28 21 19 63
+            </a>
+            <a class="btn" href="mailto:contact@rentautobahn.com" aria-label="Send email">
+              <span class="mini" aria-hidden="true">📧</span>
+              contact@rentautobahn.com
+            </a>
+            <button class="btn" id="copyPolicy" type="button" aria-label="Copy policy text">
+              <span class="mini" aria-hidden="true">📋</span>
+              Copy policy
+            </button>
+          </div>
+
+          <div class="callout">
+            <div class="pill" aria-hidden="true">✅</div>
+            <div>
+              <h3>Plain truth</h3>
+              <p>If an app doesn’t collect data, it can’t leak it. That’s the whole point here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sections">
+      <div class="acc reveal" data-open="true">
+        <button type="button" aria-expanded="true">
+          <div class="left">
+            <div class="pill" aria-hidden="true">📦</div>
+            <div>
+              <div style="font-weight:700">Data collection</div>
+              <div style="color:var(--muted2); font-size:12.5px; margin-top:2px;">What we collect (nothing)</div>
+            </div>
+          </div>
+          <div class="chev" aria-hidden="true">⌄</div>
+        </button>
+        <div class="panel">
+          <div class="p">
+            <ul>
+              <li>No personal information is collected.</li>
+              <li>No device identifiers are collected.</li>
+              <li>No location data is collected by the app.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc reveal">
+        <button type="button" aria-expanded="false">
+          <div class="left">
+            <div class="pill" aria-hidden="true">👆</div>
+            <div>
+              <div style="font-weight:700">User-initiated actions</div>
+              <div style="color:var(--muted2); font-size:12.5px; margin-top:2px;">Only when you tap</div>
+            </div>
+          </div>
+          <div class="chev" aria-hidden="true">⌄</div>
+        </button>
+        <div class="panel">
+          <div class="p">
+            You can choose to:
+            <ul>
+              <li>Start a phone call using your dialer.</li>
+              <li>Open a WhatsApp chat in the WhatsApp app.</li>
+              <li>Open a map link in your preferred maps app.</li>
+            </ul>
+            These actions are initiated by you and handled by the respective apps. Any data you share there is
+            subject to those apps’ privacy policies.
+          </div>
+        </div>
+      </div>
+
+      <div class="acc reveal">
+        <button type="button" aria-expanded="false">
+          <div class="left">
+            <div class="pill" aria-hidden="true">🤝</div>
+            <div>
+              <div style="font-weight:700">Data sharing</div>
+              <div style="color:var(--muted2); font-size:12.5px; margin-top:2px;">Third parties</div>
+            </div>
+          </div>
+          <div class="chev" aria-hidden="true">⌄</div>
+        </button>
+        <div class="panel">
+          <div class="p">
+            The app does not share data with third parties because it does not collect data.
+          </div>
+        </div>
+      </div>
+
+      <div class="acc reveal">
+        <button type="button" aria-expanded="false">
+          <div class="left">
+            <div class="pill" aria-hidden="true">🗄️</div>
+            <div>
+              <div style="font-weight:700">Data retention</div>
+              <div style="color:var(--muted2); font-size:12.5px; margin-top:2px;">Storage</div>
+            </div>
+          </div>
+          <div class="chev" aria-hidden="true">⌄</div>
+        </button>
+        <div class="panel">
+          <div class="p">
+            Because no data is collected or stored, there is no data retained on our servers.
+          </div>
+        </div>
+      </div>
+
+      <div class="acc reveal">
+        <button type="button" aria-expanded="false">
+          <div class="left">
+            <div class="pill" aria-hidden="true">📝</div>
+            <div>
+              <div style="font-weight:700">Changes</div>
+              <div style="color:var(--muted2); font-size:12.5px; margin-top:2px;">Updates</div>
+            </div>
+          </div>
+          <div class="chev" aria-hidden="true">⌄</div>
+        </button>
+        <div class="panel">
+          <div class="p">
+            If this policy changes, the updated text will be shown in the app.
+          </div>
+        </div>
+      </div>
+
+      <div class="acc reveal">
+        <button type="button" aria-expanded="false">
+          <div class="left">
+            <div class="pill" aria-hidden="true">📍</div>
+            <div>
+              <div style="font-weight:700">Location</div>
+              <div style="color:var(--muted2); font-size:12.5px; margin-top:2px;">Business info</div>
+            </div>
+          </div>
+          <div class="chev" aria-hidden="true">⌄</div>
+        </button>
+        <div class="panel">
+          <div class="p">
+            AUTOBAHN RENT CAR Meknes<br/>
+            Meknes, Morocco
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="reveal">
+      <div>© <span id="year"></span> AUTOBAHN RENT CAR • Privacy Policy</div>
+      <div><code>no-login</code> <code>no-ads</code> <code>no-analytics</code> <code>no-background</code></div>
+    </footer>
+  </div>
+
+  <script>
+    // ---------- Small helpers ----------
+    const $ = (s, el=document) => el.querySelector(s);
+    const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
+
+    // Date labels
+    const now = new Date();
+    $("#year").textContent = now.getFullYear();
+    $("#today").textContent = now.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"2-digit" });
+
+    // Accordion behavior (single-open, smooth)
+    $$(".acc").forEach((acc, idx) => {
+      const btn = $("button", acc);
+      const panel = $(".panel", acc);
+
+      // default open (via data-open)
+      const shouldOpen = acc.dataset.open === "true";
+      if (shouldOpen){
+        acc.classList.add("open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+
+      btn.addEventListener("click", () => {
+        const isOpen = acc.classList.contains("open");
+
+        // close all
+        $$(".acc.open").forEach(a => {
+          if (a !== acc){
+            a.classList.remove("open");
+            $("button", a).setAttribute("aria-expanded", "false");
+          }
+        });
+
+        // toggle current
+        acc.classList.toggle("open", !isOpen);
+        btn.setAttribute("aria-expanded", String(!isOpen));
+
+        // micro “pop” animation
+        acc.animate(
+          [{ transform:"translateY(0)" }, { transform:"translateY(-2px)" }, { transform:"translateY(0)"}],
+          { duration: 220, easing:"cubic-bezier(.2,.9,.2,1)" }
+        );
+      });
+    });
+
+    // Copy policy text
+    const policyText = `Overview
+This app does not collect, store, or share personal data. There is no login, no payment, no analytics, no ads, and no background services.
+
+Data collection
+No personal information is collected.
+No device identifiers are collected.
+No location data is collected by the app.
+
+User-initiated actions
+You can choose to:
+Start a phone call using your dialer.
+Open a WhatsApp chat in the WhatsApp app.
+Open a map link in your preferred maps app.
+These actions are initiated by you and handled by the respective apps. Any data you share there is subject to those apps' privacy policies.
+
+Data sharing
+The app does not share data with third parties because it does not collect data.
+
+Data retention
+Because no data is collected or stored, there is no data retained on our servers.
+
+Changes
+If this policy changes, the updated text will be shown in the app.
+
+Contact
+For questions about this policy, contact AUTOBAHN RENT CAR Meknes in Meknes, Morocco.
+Phone: +2127 28 21 19 63
+Email: contact@rentautobahn.com`;
+
+    $("#copyPolicy").addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(policyText);
+        toast("Copied ✔");
+      }catch(e){
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = policyText;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+        toast("Copied ✔");
+      }
+    });
+
+    // Toast (minimal, animated)
+    function toast(msg){
+      const t = document.createElement("div");
+      t.textContent = msg;
+      t.style.position = "fixed";
+      t.style.left = "50%";
+      t.style.bottom = "24px";
+      t.style.transform = "translateX(-50%) translateY(10px)";
+      t.style.padding = "10px 14px";
+      t.style.borderRadius = "999px";
+      t.style.border = "1px solid rgba(255,255,255,.14)";
+      t.style.background = "rgba(20,24,40,.72)";
+      t.style.backdropFilter = "blur(14px)";
+      t.style.color = "rgba(255,255,255,.92)";
+      t.style.boxShadow = "0 18px 70px rgba(0,0,0,.55)";
+      t.style.fontSize = "13px";
+      t.style.opacity = "0";
+      t.style.zIndex = "9999";
+      document.body.appendChild(t);
+
+      t.animate(
+        [{opacity:0, transform:"translateX(-50%) translateY(10px)"},
+         {opacity:1, transform:"translateX(-50%) translateY(0px)"}],
+        {duration:180, easing:"cubic-bezier(.2,.9,.2,1)", fill:"forwards"}
+      );
+
+      setTimeout(() => {
+        t.animate(
+          [{opacity:1, transform:"translateX(-50%) translateY(0px)"},
+           {opacity:0, transform:"translateX(-50%) translateY(10px)"}],
+          {duration:220, easing:"ease", fill:"forwards"}
+        ).onfinish = () => t.remove();
+      }, 1100);
+    }
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries)=>{
+      for (const e of entries){
+        if (e.isIntersecting){
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      }
+    }, {threshold: .12});
+    $$(".reveal").forEach(el => io.observe(el));
+
+    // Parallax tilt on cards (mouse)
+    const cards = $$(".card");
+    window.addEventListener("mousemove", (ev)=>{
+      const { innerWidth:w, innerHeight:h } = window;
+      const dx = (ev.clientX / w - 0.5);
+      const dy = (ev.clientY / h - 0.5);
+      cards.forEach((c,i)=>{
+        const s = 1 - i*0.03;
+        c.style.transform = `perspective(900px) rotateX(${(-dy*3).toFixed(2)}deg) rotateY(${(dx*4).toFixed(2)}deg) translateZ(0) scale(${s})`;
+      });
+    }, {passive:true});
+    window.addEventListener("mouseleave", ()=>{
+      cards.forEach(c => c.style.transform = "none");
+    });
+
+    // Starfield canvas (lightweight)
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let W,H,stars=[];
+    function resize(){
+      W = canvas.width = Math.floor(window.innerWidth * devicePixelRatio);
+      H = canvas.height = Math.floor(window.innerHeight * devicePixelRatio);
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+      stars = Array.from({length: Math.min(220, Math.floor((window.innerWidth*window.innerHeight)/9000))}, () => ({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        r: (Math.random()*1.6 + .4) * devicePixelRatio,
+        s: (Math.random()*0.35 + 0.1) * devicePixelRatio,
+        a: Math.random()*0.6 + 0.15
+      }));
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    let t0 = performance.now();
+    function tick(t){
+      const dt = Math.min(32, t - t0); t0 = t;
+      ctx.clearRect(0,0,W,H);
+
+      // gentle drift based on time
+      const driftX = Math.sin(t/4500) * 0.18 * devicePixelRatio;
+      const driftY = Math.cos(t/5200) * 0.14 * devicePixelRatio;
+
+      for (const st of stars){
+        st.x += (st.s + driftX) * (dt/16);
+        st.y += (st.s*0.65 + driftY) * (dt/16);
+        if (st.x > W+10) st.x = -10;
+        if (st.y > H+10) st.y = -10;
+
+        ctx.beginPath();
+        ctx.arc(st.x, st.y, st.r, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(255,255,255,${st.a})`;
+        ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  </script>
 </body>
 </html>
